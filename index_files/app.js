@@ -1,19 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Include components files
-    function includeHTML() {
-        const includes = document.querySelectorAll('[data-include]');
-        includes.forEach(el => {
-            const file = el.getAttribute("data-include");
-            fetch(file)
-            .then(response => response.text())
-            .then(data => el.innerHTML = data)
-            .catch(err => console.log("Error loading file:", err));
-        });
-    }
-
-    window.onload = includeHTML;
-    
-    // navlinks changing color when click
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll("section[id]");
 
