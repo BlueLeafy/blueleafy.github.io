@@ -6,10 +6,10 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script>
-    // Store the original path before redirecting
-    sessionStorage.setItem('gh-pages-route', window.location.pathname + window.location.search + window.location.hash);
-    // Redirect to root while preserving the original URL in browser history
-    window.location.replace(window.location.origin + '/?gh-pages-redirect');
+    // Immediately redirect to root while storing the original path
+    const originalPath = window.location.pathname + window.location.search + window.location.hash;
+    localStorage.setItem('gh-pages-original-path', originalPath);
+    window.location.replace(window.location.origin + '/');
   </script>
 </head>
 
