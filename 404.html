@@ -9,7 +9,7 @@
     // Immediately redirect to root while storing the original path
     const originalPath = window.location.pathname + window.location.search + window.location.hash;
     localStorage.setItem('gh-pages-original-path', originalPath);
-    window.location.replace(window.location.origin + '/' + originalPath);
+    window.location.replace(originalPath);
   </script>
 </head>
 
