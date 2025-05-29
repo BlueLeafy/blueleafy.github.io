@@ -1,13 +1,22 @@
 <!-- public/404.html -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <script>
-      sessionStorage.redirect = location.href;
-      location.replace('/?redirect=' + encodeURIComponent(location.pathname));
-    </script>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Store the original path before redirecting
+    sessionStorage.setItem('gh-pages-route', window.location.pathname + window.location.search + window.location.hash);
+    // Redirect to root while preserving the original URL in browser history
+    window.location.replace(window.location.origin + '/?gh-pages-redirect');
+  </script>
+</head>
+
+<body>
+  <noscript>
+    Please enable JavaScript or <a href="/">go to homepage</a>
+  </noscript>
+</body>
+
 </html>
