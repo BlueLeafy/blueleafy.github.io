@@ -1,0 +1,1 @@
+import{j as r}from"./index-CONJOCF_.js";import o from"./HomeProjects-CVccHSAW.js";import"./Head-HI8IISgE.js";import"./iconBase-n88Rkmus.js";function s(){return r.jsx(r.Fragment,{children:r.jsx(o,{})})}export{s as default};
