@@ -4,10 +4,11 @@ function FormSelectRow({
     labelText,
     name,
     placeholder,
-    defaultValue = '',
+    value = '', 
     className,
     ...props
 }) {
+
     return (
         <div className="bg-white ps-2.5 py-1.5 pe-3">
             {labelText && (
@@ -19,7 +20,7 @@ function FormSelectRow({
                 name={name}
                 id={name}
                 className={`${className} min-w-[200px] w-full`}
-                defaultValue={defaultValue}
+                value={value}
                 {...props}
             >
                 {placeholder && (

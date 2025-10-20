@@ -21,7 +21,7 @@ function Breadcrumbs({
     if (processedBreadcrumbs.length <= 1) return null;
 
     return (
-        <nav aria-label="Breadcrumb" className="h-[25px] w-full bg-gray-50">
+        <nav aria-label="Breadcrumb" className="h-[25px] w-full">
             <ol className="breadcrumbs">
                 {processedBreadcrumbs.map((breadcrumb, index) => (
                     <li key={breadcrumb.href}>

@@ -30,10 +30,10 @@ app.get('/', (req,res) => {
     res.send("Helelo there");
 })
 
-// Admin
-app.use("/api/admin",  adminRouters);
-// Product
-app.use("/api/admin/dashboard/", productRoutes);
+// User route (auth)
+app.use("/api/auth",  adminRouters);
+// public route (admin will use it too)
+app.use("/api/prodotti/", productRoutes);
 
 // uploads files
 const __filename = fileURLToPath(import.meta.url);

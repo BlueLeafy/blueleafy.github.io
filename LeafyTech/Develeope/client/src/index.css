@@ -2,157 +2,229 @@
 @import "tailwindcss";
 
 @theme {
-    /* brand palette */
-    --lt-blue: #225fa7;
-
-    /* neutral */
-    --bg-neutral-01: #f1f1f1;
-
-    /* white and black */
-    --bg-white: #fff;
-    --bg-black: #000;
-
-    /* buttons backgrounds */
-    --btn-primary: #2b7fff;
-    --btn-secondary: white;
-    --btn-warning: rgb(255, 157, 0);
-    --btn-danger: rgb(179, 0, 0);
-
-    /* text color */
-    --txt-primary: black;
-    /* find appropriate color */
-    --txt-black: #000;
-    --txt-white: #fff;
-
-    /* UI colors */
-    --blue-01: #115DFC;
-
+    /* Semantic color tokens */
 }
 
-/* color palette */
-.color-palette {
-    /* brand palette */
-    --lt-blue: #225fa7;
+/* ===== VARIABLES ===== */
+.my-root {
+    /* ===== CORE BRAND COLORS ===== */
+    --color-primary: rgb(34, 95, 167);
+    --color-primary-hover: rgb(0, 102, 255);
+    --color-primary-active: rgb(192, 231, 255);
 
-    /* neutral */
-    --bg-neutral-01: #f1f1f1;
+    --color-secondary: rgb(179, 0, 0);
+    --color-secondary-hover: rgb(151, 0, 0);
 
-    /* white and black */
-    --bg-white: #fff;
-    --bg-black: #000;
+    --color-tertiary: rgb(255, 157, 0);
+    --color-tertiary-hover: rgb(233, 144, 0);
 
-    /* buttons UI backgrounds */
-    --btn-primary: #2b7fff;
-    --btn-secondary: white;
-    --btn-warning: rgb(255, 157, 0);
-    --btn-danger: rgb(179, 0, 0);
+    /* ===== STATUS COLORS ===== */
+    --color-success: rgb(16, 185, 129);
+    --color-success-light: rgb(209, 250, 229);
 
-    /* text color */
-    --txt-primary: black;
-    /* find appropriate color */
-    --txt-black: #000;
-    --txt-white: #fff;
+    --color-warning: rgb(245, 158, 11);
+    --color-warning-light: rgb(254, 243, 199);
 
-    /* UI colors */
-    --blue-01: #115DFC;
+    --color-error: rgb(239, 68, 68);
+    --color-error-light: rgb(254, 226, 226);
+
+    --color-info: rgb(59, 130, 246);
+    --color-info-light: rgb(219, 234, 254);
+
+    /* ===== NEUTRAL COLORS ===== */
+    --color-white: rgb(255, 255, 255);
+    --color-black: rgb(0, 0, 0);
+
+    --color-neutral-100: rgb(249, 250, 251);
+    --color-neutral-200: rgb(243, 244, 246);
+    --color-neutral-300: rgb(229, 231, 235);
+    --color-neutral-400: rgb(209, 213, 219);
+    --color-neutral-500: rgb(107, 114, 128);
+    --color-neutral-900: rgb(31, 41, 55);
+
+    /* ===== TEXT COLORS ===== */
+    --text-primary: rgb(31, 41, 55);
+    --text-secondary: rgb(107, 114, 128);
+    --text-tertiary: rgb(156, 163, 175);
+    --text-inverse: rgb(255, 255, 255);
+
+    --text-link: rgb(34, 95, 167);
+    --text-link-hover: rgb(0, 102, 255);
+    --text-disabled: rgb(209, 213, 219);
+
+    /* ===== BACKGROUND COLORS ===== */
+    --bg-primary: rgb(255, 255, 255);
+    --bg-secondary: rgb(249, 250, 251);
+    --bg-tertiary: rgb(243, 244, 246);
+
+    --bg-surface: rgb(255, 255, 255);
+    --bg-surface-hover: rgb(249, 250, 251);
+    --bg-surface-active: rgb(243, 244, 246);
+
+    --bg-overlay: rgba(0, 0, 0, 0.5);
+    --bg-backdrop: rgba(0, 0, 0, 0.1);
+    --bg-disabled: rgb(243, 244, 246);
+
+    /* ===== BORDER COLORS ===== */
+    --border-primary: rgb(229, 231, 235);
+    --border-secondary: rgb(209, 213, 219);
+    --border-strong: rgb(156, 163, 175);
+    --border-focus: rgb(34, 95, 167);
+    --border-error: rgb(239, 68, 68);
+
+    /* ===== BUTTON COLORS ===== */
+    --button-primary-bg: rgb(34, 95, 167);
+    --button-primary-text: rgb(255, 255, 255);
+    --button-primary-hover: rgb(0, 102, 255);
+    --button-primary-border: rgb(34, 95, 167);
+
+    --button-secondary-bg: rgb(255, 255, 255);
+    --button-secondary-text: rgb(0, 0, 0);
+    --button-secondary-hover: rgb(243, 244, 246);
+    --button-secondary-border: rgb(255, 255, 255);
+
+    --button-danger-bg: rgb(179, 0, 0);
+    --button-danger-text: rgb(255, 255, 255);
+    --button-danger-hover: rgb(151, 0, 0);
+    --button-danger-border: rgb(179, 0, 0);
+
+    --button-warning-bg: rgb(255, 157, 0);
+    --button-warning-text: rgb(255, 255, 255);
+    --button-warning-hover: rgb(233, 144, 0);
+    --button-warning-border: rgb(255, 157, 0);
+
+    /* ===== INTERACTIVE STATES ===== */
+    --state-hover: rgba(59, 130, 246, 0.1);
+    --state-active: rgba(59, 130, 246, 0.2);
+    --state-focus: rgba(59, 130, 246, 0.25);
+
+    --shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    --outline-focus: 2px solid rgb(34, 95, 167);
+
+    /* ===== FORM COLORS ===== */
+    --input-bg: rgb(249, 250, 251);
+    --input-border: rgb(192, 196, 201);
+    --input-border-focus: rgb(34, 95, 167);
+    --input-text: rgb(32, 36, 47);
+    --input-placeholder: rgb(107, 114, 128);
+
+    --file-upload-bg: rgb(249, 250, 251);
+    --file-upload-border: rgb(192, 196, 201);
+    --file-upload-button-bg: rgb(34, 95, 167);
+
+    /* ===== SHADOW COLORS ===== */
+    --shadow-color: rgba(0, 0, 0, 0.24);
+    --shadow-primary: rgba(30, 143, 255, 0.35);
+    --shadow-secondary: rgba(45, 35, 66, 0.15);
+}
+
+/* ==== VARIABLES ENDS HERE ==== */
+
+/* === BASIC STYLING === */
+*,
+::before,
+::after {
+    box-sizing: border-box;
 }
 
 html,
 body {
+    /* font */
     font-family: "Roboto", sans-serif;
     font-size: 1rem;
     line-height: 1.5;
 }
 
-/* BUTTON */
+/* === UI BUTTONS === */
 .btn {
     padding: 0.75em 1.125em;
     border-radius: 0.5rem;
     border: none;
-    font-size: 17px;
+    font-size: 0.88rem;
     font-weight: bold;
     text-align: center;
     cursor: pointer;
 }
 
 .btn-primary {
-    color: #f4f0ff;
-    background-color: #2b7fff;
-    border: 1px solid #2b7fff;
-    box-shadow: 0 0.625em 1em 0 rgba(30, 143, 255, 0.35);
+    color: var(--button-primary-text);
+    background-color: var(--button-primary-bg);
+    border: 1px solid var(--button-primary-border);
+    box-shadow: 0 0.625em 1em 0 var(--shadow-primary);
     transition: all 250ms ease-in-out;
 }
 
 .btn-primary:hover {
-    background-color: #0066ff;
+    background-color: var(--button-primary-hover);
 }
 
 .btn-secondary {
-    color: black;
-    background-color: white;
-    border: 1px solid white;
-    box-shadow: 0 0.625em 1em 0 rgba(45, 35, 66, 0.15);
+    color: var(--button-secondary-text);
+    background-color: var(--button-secondary-bg);
+    border: 1px solid var(--button-secondary-border);
+    box-shadow: 0 0.625em 1em 0 var(--shadow-secondary);
     transition: all 250ms ease-in-out;
 }
 
 .btn-secondary:hover {
-    background-color: #f2f2f2;
-
+    background-color: var(--button-secondary-hover);
 }
 
 .btn-danger {
-    background-color: rgb(179, 0, 0);
-    color: white;
-    border: 1px solid rgb(179, 0, 0);
+    background-color: var(--button-danger-bg);
+    color: var(--button-danger-text);
+    border: 1px solid var(--button-danger-border);
     transition: all 250ms ease-in-out;
 }
 
 .btn-danger:hover {
-    background-color: rgb(151, 0, 0);
+    background-color: var(--button-danger-hover);
 }
 
 .btn-warning {
-    background-color: rgb(255, 157, 0);
-    color: white;
-    border: 1px solid rgb(255, 157, 0);
+    background-color: var(--button-warning-bg);
+    color: var(--button-warning-text);
+    border: 1px solid var(--button-warning-border);
     transition: all 250ms ease-in-out;
 }
 
 .btn-warning:hover {
-    background-color: rgb(233, 144, 0);
+    background-color: var(--button-warning-hover);
 }
 
 .outlined {
-    color: black;
+    color: var(--text-primary);
     background-color: transparent;
-    border: 1px solid black;
+    border: 1px solid var(--border-primary);
 }
 
 .outlined:hover {
-    color: #2b7fff;
-    border-color: #2b7fff;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
     transition: all 250ms ease-in-out;
 }
 
 .text {
-    color: black;
+    color: var(--text-primary);
     background-color: transparent;
     border: none;
     transition: all 250ms ease-in-out;
 }
 
 .text:hover {
-    color: #2b7fff;
+    color: var(--color-primary);
 }
 
 /* CARDS */
 .card-over-effect {
     border: 1px solid transparent;
-    transition: border 250ms ease;
+    box-shadow: rgba(var(--shadow-color), 0) 0px 3px 8px;
+    transition: all 250ms ease;
 }
 
 .card-over-effect:hover {
-    border-color: var(--lt-blue);
+    border-color: var(--border-focus);
+    box-shadow: var(--shadow-color) 0px 3px 8px;
 }
 
 /* MAIN NAV */
@@ -167,7 +239,7 @@ body {
 }
 
 .burger-nav-toggle .line {
-    background-color: black;
+    background-color: var(--color-black);
     height: 2px;
     border-radius: 10px;
 }
@@ -220,7 +292,7 @@ body {
     position: fixed;
     inset: 0;
     top: 60px;
-    background-color: white;
+    background-color: var(--bg-primary);
     height: 100vh;
 }
 
@@ -242,6 +314,43 @@ body {
 
 .mobile-menu .mobile-menu-link:hover {
     transform: translateX(5px);
+}
+
+/* AUTH TOP NAV */
+.notify-animate svg {
+    transform-origin: center center;
+    transition: transform 0.2s ease;
+}
+
+.notify-animate:hover svg {
+    animation: shake 500ms ease-in;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0);
+    }
+
+    20% {
+        transform: rotate(-20deg);
+    }
+
+    40% {
+        transform: rotate(20deg);
+    }
+
+    60% {
+        transform: rotate(-20deg);
+    }
+
+    80% {
+        transform: rotate(20deg);
+
+    }
+
+    100% {
+        transform: rotate(0);
+    }
 }
 
 /* breadcrum nav  */
@@ -273,26 +382,25 @@ body {
 }
 
 .form-md label {
-    color: #374151;
+    color: var(--text-secondary);
     font-weight: 500;
     font-size: calc(1rem*0.875);
 }
 
 .form-md input,
 .form-md textarea {
-    background-color: #f9fafb;
-    border: 1px solid #c0c4c9;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
     border-bottom-width: 2px;
     border-radius: 0.25rem;
-    color: #20242f;
+    color: var(--input-text);
     font-size: 1rem;
     padding: 0.25rem 0.55rem;
-
 }
 
 .form-md input:focus,
 .form-md textarea:focus {
-    border-color: #2b7fff;
+    border-color: var(--input-border-focus);
     outline: none;
 }
 
@@ -313,50 +421,49 @@ body {
 }
 
 .form-xxl label {
-    color: #374151;
+    color: var(--text-secondary);
     font-weight: 500;
     font-size: calc(1rem*0.875);
 }
 
 .form-xxl input,
 .form-xxl textarea {
-    background-color: #f9fafb;
-    border: 1px solid #c0c4c9;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
     border-bottom-width: 2px;
     border-radius: 0.25rem;
-    color: #20242f;
+    color: var(--input-text);
     font-size: 1rem;
     padding: 0.25rem 0.55rem;
-
 }
 
 .form-xxl input:focus,
 .form-xxl textarea:focus {
-    border-color: #2b7fff;
+    border-color: var(--input-border-focus);
     outline: none;
 }
 
 /* File upload input */
 .form-xxl input[type="file"] {
-    background-color: #f9fafb;
+    background-color: var(--file-upload-bg);
     padding: 0.25rem 0.55rem;
     display: block;
     width: 100%;
     border-radius: 0.25rem;
-    border: 1px dashed #c0c4c9;
+    border: 1px dashed var(--file-upload-border);
     outline: none;
     cursor: pointer;
 }
 
 .form-xxl input[type="file"]::file-selector-button {
-    background-color: #2b7fff;
+    background-color: var(--file-upload-button-bg);
     border: 0;
     --webkit-appearance: none;
     --moz-appearance: none;
     appearance: none;
     padding: 6px 10px;
     border-radius: 0.25rem;
-    color: #fff;
+    color: var(--color-white);
     margin-right: 1rem;
     outline: none;
     font-family: "Roboto", sans-serif;
@@ -364,13 +471,13 @@ body {
 }
 
 .form-xxl input[type="file"]::-webkit-file-selector-button {
-    background-color: #2b7fff;
+    background-color: var(--file-upload-button-bg);
     border: 0;
     --webkit-appearance: none;
     appearance: none;
     padding: 0.5rem;
     border-radius: 0.25rem;
-    color: #fff;
+    color: var(--color-white);
     margin-right: 1rem;
     outline: none;
     font-family: "Roboto", sans-serif;
@@ -389,7 +496,7 @@ body {
 
 .form-xl input {
     background-color: transparent;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--border-primary);
 }
 
 /**/
@@ -407,8 +514,70 @@ body {
     flex-direction: row;
     align-items: center;
 }
+
 .filter-dropdown-row-items {
     display: flex;
     flex-direction: row;
     column-gap: 2.5rem;
+}
+
+/* === SIDENAV DEFAULT === */
+.sidenav-item,
+.sidenav-dropdown-item {
+    background-color: transparent;
+    border-radius: 0.23rem;
+    color: var(--text-primary);
+    display: block;
+    font-weight: 300;
+    text-wrap: nowrap;
+    cursor: pointer;
+    transition: all 250ms ease-in;
+}
+
+.sidenav-item {
+    padding-left: 2rem;
+    padding-top: 0.28rem;
+    padding-bottom: 0.28rem;
+    padding-right: 2rem;
+    margin-left: 0.53rem;
+}
+
+.sidenav-dropdown-item {
+    padding-left: 0.2rem;
+    padding-top: 0.28rem;
+    padding-bottom: 0.28rem;
+    padding-right: 2rem;
+    margin-left: 0.53rem;
+
+}
+
+.sidenav-item:hover,
+.sidenav-dropdown-item:hover {
+    background-color: var(--state-hover);
+    color: var(--color-primary);
+}
+
+.sidenav-item.active,
+.sidenav-dropdown-item.acitve {
+    background-color: var(--state-hover);
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* DASHBOARD */
+.dashboard {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    /* Fixed sidebar, flexible main */
+    min-height: 100vh;
+}
+
+.dashboard-aside {
+    background-color: #fefffe;
+}
+
+.dashboard-main {
+    background-color: #e8e8e8;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }

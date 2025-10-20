@@ -6,15 +6,15 @@ function Footer() {
         { label: "contatti", path: "/contatti" },
         { label: "privacy", path: "/privacy-policy" },
         { label: "terms", path: "/terms" },
-        { label: "admin", path: "/admin" },
+        { label: "Admin", path: "/login" },
     ]
 
     const renderedLinks = footerLinks.map((item, i) => {
         return (
             <li key={i} className="capitalize">
-                <a href={item.path}>
+                <Link to={item.path}>
                     {item.label}
-                </a>
+                </Link>
             </li>
         )
     });

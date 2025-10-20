@@ -87,6 +87,8 @@ export const getAllProducts = async (req, res) => {
         queryObj.parameters = parameters;
     }
 
+    // Filters only for admin
+
     // Sort
     const sortOptions = {
         "a-z": "position",
@@ -111,13 +113,16 @@ export const getAllProducts = async (req, res) => {
     const limit = Number(req.query.limit) || 10;
     const skip = (page - 1) * limit;
 
-    // get ALL
+    // get filtered prodcts (for display)
     const products = await Product.find(queryObj).sort(sortKey).skip(skip).limit(limit);
     // count how many results
     const totalProducts = await Product.countDocuments(queryObj);
     const numOfPages = Math.ceil(totalProducts / limit);
+    
+    // Get all products for filter options (without pagination / filters)
+    const allProducts = await Product.find({}).select("company applications parameters").lean();
 
-    res.status(StatusCodes.OK).json({ products, totalProducts, currentPage: page, numOfPages });
+    res.status(StatusCodes.OK).json({ products, totalProducts, currentPage: page, numOfPages, allProducts });
 };
 
 // Get single product

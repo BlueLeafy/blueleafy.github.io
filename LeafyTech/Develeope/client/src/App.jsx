@@ -1,89 +1,65 @@
 // App.jsx
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Layout, Landing } from "./pages";
-import { Login, Logout, Register, Dashboard, AllProducts, AddProduct, ProductDetails } from "./pages/Admin"
-import { registerAdminAction, loginAction, logoutAction } from "./actions/customActions";
 import { ToastContainer } from "react-toastify";
-import { getAllProducts, getSingleProduct } from "./loaders/customLoaders";
-import { ProductBasicInfo, ProductMediaList, ProductDocuments } from "./components/Products/Admin";
+import { PublicLayout, HomePage, LoginPage, LogoutPage } from "./pages/Public";
+import { AuthLayout, Dashboard } from "./pages/Auth";
+import { loginAciton, logoutAction } from "./actions/authActions";
+import { authLoader } from "./loaders/authLoaders";
+import { AuthProvider } from "./context/AuthContext";
+import { ProductProvider } from "./context/ProductContext";
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Layout />,
+        element: <PublicLayout />, // public routes
         children: [
             {
                 index: true,
-                element: <Landing />
+                element: <HomePage />
             },
+            // {
+            //     path: "register", // is there a way to send to admin role an email to confirm access to new registered user (the new user wont' be able to access the deeper routes up to the confirmation of admin)
+            //     element: <Register />,
+            //     action: registerAction
+            // },
             {
-                path: "register",
-                element: <Register />,
-                action: registerAdminAction
-            },
-            {
-                path: "admin",
-                element: <Login />,
-                action: loginAction
-            },
-            {
-                path: "admin/dashboard",
-                element: <Dashboard />,
-                // laoder here for context
-                children: [
-                    // here all the admin reserved pages will appear
-                    {
-                        // List of all products data
-                        index: true,
-                        element: <AllProducts />,
-                        loader: getAllProducts, // filter products here
-                    },
-                    {
-                        // Add new product
-                        path: "crea-prodotto",
-                        element: <AddProduct />
-                    },
-                    {
-                        // :id product detail with possibility to edit data
-                        path: ":id",
-                        element: <ProductDetails />,
-                        loader: getSingleProduct,
-                        children: [
-                            {
-                                index: true,
-                                element: <ProductBasicInfo />
-                            },
-                            {
-                                path: "media",
-                                element: <ProductMediaList />
-                            },
-                            {
-                                path: "documenti",
-                                element: <ProductDocuments />
-                            }
-                        ]
-                    },
-
-
-
-                ]
+                path: "login",
+                element: <LoginPage />,
+                action: loginAciton
             },
             {
                 // Exit admin session
-                path: "admin/logout",
-                element: <Logout />,
-                action: logoutAction,
+                path: "logout",
+                element: <LogoutPage />,
+                action: logoutAction
             },
         ]
     },
-])
+    // Here all auth routes
+    {
+        path: "/auth",
+        element: <AuthLayout />,
+        loader: authLoader,
+        children: [
+            {
+                index: true,
+                element: <Dashboard />,
+                handle: {title: "Dashboard"}
+            }
+        ]
+    }
+]); // <- This closes the createBrowserRouter array
 
 function App() {
     return (
-        <>
-            <RouterProvider router={router} />
-            <ToastContainer />
-        </>
+        <div className="my-root">
+            <AuthProvider>
+                <ProductProvider>
+                    <RouterProvider router={router} />
+                    <ToastContainer />
+                </ProductProvider>
+            </AuthProvider>
+        </div>
     )
 };
 

@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 function Button({ children, className = '', primary, secondary, danger, warning,outlined, text, ...rest }) {
     const btnClasses = classNames(
-        "btn",
+        "btn text-nowrap",
         {
             "btn-primary": primary, // Action (submit)
             "btn-secondary": secondary, // Aciton (cancel)

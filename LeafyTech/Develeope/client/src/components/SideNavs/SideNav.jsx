@@ -1,48 +1,61 @@
 // SideNav.jsx
-import { Link, Form } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import SideNavLink from "./SideNavLink";
+import SideNavDropdown from "./SideNavDropdown";
 
 function SideNav({ children, links }) {
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const location = useLocation();
+
+    // Auto-open dropdown if current path matches any dropdown item
+    useEffect(() => {
+        links.forEach((item, index) => {
+            if (item.dropdown && item.items) {
+                const isActiveDropdown = item.items.some(dropdownItem =>
+                    location.pathname.startsWith(dropdownItem.path)
+                );
+                if (isActiveDropdown) {
+                    setOpenDropdown(index);
+                }
+            }
+        });
+    }, [location.pathname, links]);
+
+    const toggleDropdown = (index) => {
+        setOpenDropdown(openDropdown === index ? null : index);
+    };
+
     const renderedLinks = links.map((item, i) => {
-        const IconComponent = item.icon;
+        const isDropdownOpen = openDropdown === i;
+        const hasActiveChild = item.dropdown && item.items?.some(dropdownItem => 
+            location.pathname.startsWith(dropdownItem.path)
+        );
+
+        if (item.dropdown) {
+            return (
+                <SideNavDropdown
+                    key={i}
+                    item={item}
+                    index={i}
+                    isOpen={isDropdownOpen}
+                    hasActiveChild={hasActiveChild}
+                    onToggle={() => toggleDropdown(i)}
+                />
+            );
+        }
 
         return (
-            <li key={i}>
-                {item.isForm ? (
-                    <Form method="post" action={item.path} className="text-neutral-700 transition duration-75 ease-in-out block bg-transparent hover:bg-black/15 ps-2.5 py-3 text-nowrap rounded-md cursor-pointer">
-                        <button type="submit" className="flex flex-row items-center gap-x-2.5 cursor-pointer">
-                            {IconComponent && <IconComponent />}
-                            <span>
-                                {item.label}
-                            </span>
-                        </button>
-                    </Form>
-                ) : (
-                    <Link
-                        to={item.path}
-                        className="text-neutral-700 transition duration-75 ease-in-out block bg-transparent hover:bg-black/15 ps-2.5 py-3 text-nowrap rounded-md"
-                    >
-                        <div className="flex flex-row items-center gap-x-2.5">
-                            <div className={`${IconComponent ? "flex" : "hidden"}`}>
-                                {IconComponent && <IconComponent />}
-                            </div>
-                            <div>
-                                <p>
-                                    {item.label}
-                                </p>
-                            </div>
-                        </div>
-                    </Link>
-                )
-                }
-            </li >
+            <SideNavLink
+                key={i}
+                item={item}
+            />
         );
-    })
+    });
 
     return (
-        <nav className="flex justify-center;
-">
-            <div className="w-[250px] mx-auto pe-5">
-
+        <nav className="ps-2">
+            <div className="w-[250px]">
                 <ul className="flex flex-col justify-center gap-y-0.5 mt-5">
                     {renderedLinks}
                 </ul>
@@ -50,6 +63,6 @@ function SideNav({ children, links }) {
             </div>
         </nav>
     );
-};
+}
 
 export default SideNav;

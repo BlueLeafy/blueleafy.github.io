@@ -1,8 +1,8 @@
 // apis/customFetch.js
 import axios from "axios";
 
-const customFecth = axios.create({
+const customFetch = axios.create({
     baseURL: "/api"
 });
 
-export default customFecth;
+export default customFetch;
